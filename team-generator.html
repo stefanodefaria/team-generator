@@ -61,11 +61,11 @@ Anderson, Paulinho, Léo</textarea>
 
 <script>
     function parseInput(input) {
-        return input.trim().split('\n').map(name => name.trim()).filter(name => name);
+        return input.split('\n').map(name => name.trim());
     }
 
     function parseRules(input) {
-        return input.trim().split('\n').map(rule => parseInput(rule));
+        return input.split('\n').map(rule => rule.split(",").map(player => player.trim()));
     }
 
     function shuffle(originalArray) {
@@ -79,13 +79,24 @@ Anderson, Paulinho, Léo</textarea>
         return array;
     }
 
-    function isPlayerForbiddenInTeam(team, player, rules) {
-        for (const rule of rules) {
+    function isPlayerForbiddenInTeam(team, player, forbiddenInTheSameTeamRules) {
+        for (ruleIdx in forbiddenInTheSameTeamRules) {
+            const rule = forbiddenInTheSameTeamRules[ruleIdx];
+
             if (!rule.includes(player)) continue;
-            const forbiddenPlayers = new Set([player, ...team.filter(p => rule.includes(p))]);
+            const forbiddenPlayers = new Set();
+            forbiddenPlayers.add(player);
+
+            team.filter(p => rule.includes(p)).forEach(p => forbiddenPlayers.add(p));
+
             if (forbiddenPlayers.size > 1) return true;
         }
         return false;
+    }
+
+    function markPlayerAsSelected(shuffledPlayers, player) {
+        const index = shuffledPlayers.indexOf(player);
+        shuffledPlayers.splice(index, 1);
     }
 
     function selectTeams(players, rules, teamCount) {
@@ -100,7 +111,7 @@ Anderson, Paulinho, Léo</textarea>
                 const player = shuffledPlayers[playerIdx++];
                 if (isPlayerForbiddenInTeam(team, player, rules)) continue;
                 team.push(player);
-                shuffledPlayers.splice(shuffledPlayers.indexOf(player), 1);
+                markPlayerAsSelected(shuffledPlayers, player);
                 playerIdx = 0;
             }
             teams.push(team);
@@ -112,13 +123,18 @@ Anderson, Paulinho, Léo</textarea>
     document.getElementById('generateTeamsButton').onclick = function() {
         const namesInput = document.getElementById('namesInput').value;
         const rulesInput = document.getElementById('rulesInput').value;        
-        const teamCount = parseInt(document.getElementById('teamCountSelect').value, 10); // Get team count from the dropdown
+        const teamCount = parseInt(document.getElementById('teamCountSelect').value, 10);
         const players = parseInput(namesInput);
         const rules = parseRules(rulesInput);
 
-        let selectedTeams = selectTeams(players, rules, teamCount);
-        let output = '';
+        console.log(rules)
 
+        let selectedTeams = selectTeams(players, rules, teamCount);
+        while (selectedTeams.find(t => t.includes(undefined)) != null) {
+            selectedTeams = selectTeams(players, rules, teamCount);
+        }
+
+        let output = '';
         selectedTeams.forEach((team, idx) => {
             output += `Time ${idx + 1}: ${team.join(', ')}\n`;
         });
