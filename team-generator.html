@@ -120,6 +120,10 @@ Anderson, Paulinho, Léo</textarea>
         return teams;
     }
 
+    function notAllTeamsAreFull(teams) {
+        return teams.find(t => t.includes(undefined)) != null;
+    }
+
     document.getElementById('generateTeamsButton').onclick = function() {
         const namesInput = document.getElementById('namesInput').value;
         const rulesInput = document.getElementById('rulesInput').value;        
@@ -127,17 +131,19 @@ Anderson, Paulinho, Léo</textarea>
         const players = parseInput(namesInput);
         const rules = parseRules(rulesInput);
 
-        console.log(rules)
-
-        let selectedTeams = selectTeams(players, rules, teamCount);
-        while (selectedTeams.find(t => t.includes(undefined)) != null) {
-            selectedTeams = selectTeams(players, rules, teamCount);
-        }
+	let selectedTeams = selectTeams(players, rules, teamCount)
+	for(let attempt = 0; attempt < 100 && notAllTeamsAreFull(selectedTeams); attempt++) {
+	    selectedTeams = selectTeams(players, rules, teamCount);
+	}
 
         let output = '';
-        selectedTeams.forEach((team, idx) => {
-            output += `Time ${idx + 1}: ${team.join(', ')}\n`;
-        });
+	if (notAllTeamsAreFull(selectedTeams)) {
+            output = 'Não foi possível gerar times com as regras fornecidas';
+	} else {
+            selectedTeams.forEach((team, idx) => {
+                output += `Time ${idx + 1}: ${team.join(', ')}\n`;
+            });
+	}
 
         document.getElementById('output').textContent = output;
     };
