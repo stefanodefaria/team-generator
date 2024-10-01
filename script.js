@@ -59,9 +59,9 @@ function selectTeams(players, rules, teamCount) {
 }
 
 function generateTeams() {
-    const namesInput = document.getElementById('namesInput').value;
-    const rulesInput = document.getElementById('rulesInput').value;        
-    const teamCount = parseInt(document.getElementById('teamCountSelect').value, 10);
+    const namesInput = document.getElementById('names-input').value;
+    const rulesInput = document.getElementById('rules-input').value;        
+    const teamCount = parseInt(document.getElementById('team-count-select').value, 10);
     const players = parseInput(namesInput);
     const rules = parseRules(rulesInput);
 
@@ -81,7 +81,6 @@ function generateTeams() {
         document.getElementById(`output-${idx + 1}`).textContent = output;
     });
 
-    // TO-DO: Botão para copiar
     document.getElementById('copy-content').textContent = outputCopy;
     resizePages();
     showHiddenElements();
@@ -93,6 +92,7 @@ function resizePages() {
 }
 
 function showHiddenElements() {
+    document.getElementById('copy-feedback-message').style.display = 'none';
     document.getElementById('pre-infos').style.display = 'none';
     document.getElementById('team-results').style.display = 'block';
 }
@@ -102,12 +102,11 @@ function copyToClipboard() {
     
     navigator.clipboard.writeText(conteudoParaCopiar)
     .then(() => {
-        // Mostra uma mensagem de sucesso
-        document.getElementById('feedbackMessage').textContent = "Texto copiado!";
+        document.getElementById('copy-feedback-message').style.display = 'block';
     })
     .catch(err => {
-        // Se houver algum erro
-        document.getElementById('feedbackMessage').textContent = "Erro ao copiar o texto.";
-        console.error('Erro ao copiar para o clipboard:', err);
+        document.getElementById('copy-feedback-message').style.display = 'block';
+        document.getElementById('copy-feedback-message').textContent = "Erro ao copiar os times.";
+        console.error('Erro ao copiar para o clipboard: ', err);
     });
 }

@@ -3,15 +3,15 @@ body {
     font-family: 'Roboto-Light', sans-serif;
 }
 
-#namesInput {
+#names-input {
     height: 380px;
 }
 
-#rulesInput {
+#rules-input {
     height: 90px;
 }
 
-#generateTeamsTitle {
+#generate-teams-title {
     text-align: center;
     color: #3AB19B;
     margin-top: 8%;

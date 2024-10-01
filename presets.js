@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
         'Anderson, Paulinho, Léo'
     ]
     
-    const insertNamesTextArea = document.getElementById('namesInput');
+    const insertNamesTextArea = document.getElementById('names-input');
     insertNamesTextArea.value = names.join('\n');
 
-    const insertRulesTextArea = document.getElementById('rulesInput');
+    const insertRulesTextArea = document.getElementById('rules-input');
     insertRulesTextArea.value = rules.join('\n');
 });
