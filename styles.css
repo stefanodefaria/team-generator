@@ -1,5 +1,6 @@
 body {
     background-color: #d9f2f7;
+    font-family: 'Roboto-Light', sans-serif;
 }
 
 #namesInput {
@@ -14,6 +15,8 @@ body {
     text-align: center;
     color: #3AB19B;
     margin-top: 8%;
+    font-family: 'Roboto-Black', sans-serif;
+    letter-spacing: 1.5px;
 }
 
 .main-form-square {
@@ -83,3 +86,31 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.title {
+    font-family: 'Roboto-Black', sans-serif;
+}
+
+.team-subtitle {
+    font-family: 'Roboto-Bold', sans-serif;
+}
+
+@font-face {
+    font-family: 'Roboto-Light'; 
+    src: url('/fonts/Roboto-Light.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Black'; 
+    src: url('/fonts/Roboto-Black.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold'; 
+    src: url('/fonts/Roboto-Bold.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
