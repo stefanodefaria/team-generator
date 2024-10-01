@@ -1,0 +1,85 @@
+body {
+    background-color: #d9f2f7;
+}
+
+#namesInput {
+    height: 380px;
+}
+
+#rulesInput {
+    height: 90px;
+}
+
+#generateTeamsTitle {
+    text-align: center;
+    color: #3AB19B;
+    margin-top: 8%;
+}
+
+.main-form-square {
+    background-color: #3AB19B;
+}
+
+.left-form-square {
+    background-image: linear-gradient(to bottom right, #3AB19B, #67ccba);
+    background-color: #3AB19B;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    text-align: center;
+}
+
+.right-form-square {
+    background-color: #ffffff;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+}
+
+.resultados {
+    background-color: #3AB19B;
+}
+
+.main-button {
+    background-color: #3AB19B;
+    border-color: #3AB19B;
+    border-radius: 50px;
+
+    width: 250px;
+    height: 55px;
+    padding: 10px 20px;
+}
+
+.main-button:hover {
+    background-color: #268876;
+    border-color: #268876;
+}
+
+.secondary-button {
+    background-color: transparent;
+    border-color: #ffffff;
+    border-radius: 50px;
+
+    width: 250px;
+    height: 55px;
+    padding: 10px 20px;
+
+    margin-top: 20px;
+}
+
+.secondary-button:hover {
+    background-color: #3accb1;
+    border-color: #ffffff;
+}
+
+.partial-ocupation {
+    width: 60%;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.full-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+

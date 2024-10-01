@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Form</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    
+    
+    <div class="container full-center">
+        <div class="row">
+            
+            <!-- Campo de resultados -->
+            <div class="col-sm-4 left-form-square d-flex align-items-center justify-content-center">
+                <div id="pre-infos" class="partial-ocupation" style="display: block; color: white;">
+                    <h2>Bora de fut!</h2>
+                    <p>Gere times automaticamente baseado na lista de jogadores confirmada e regras de exclusões, aqueles jogadores que não podem estar no mesmo time.</p>
+                    <p>Preencha todas as informações no canto direito e depois só clicar em gerar! Bom futebol.</p>
+                </div>
+                <div id="team-results" class="partial-ocupation" style="display: none;">
+                    <h4>Time 1:</h4>
+                    <p id="output-1"></p>
+                    <h4>Time 2:</h4>
+                    <p id="output-2"></p>
+                    <h4>Time 3:</h4>
+                    <p id="output-3"></p>
+                    <p id="copy-content" style="display: none;"></p>
+                    <button type="button" class="btn btn-success secondary-button" style="margin-bottom: 10px;" onclick="copyToClipboard();">Compartilhar resultados</button>
+                </div>
+            </div>
+
+            <!-- Formulários -->
+            <div class="col-sm-8 right-form-square">
+                <div class="partial-ocupation">
+                    <h1 id="generateTeamsTitle">Gerador de times</h1>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Número de times:</label>                    
+                        <select class="form-select form-select" aria-label="select example" id="teamCountSelect">
+                            <option value="2">2</option>
+                            <option value="3" selected>3</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Jogadores:</label>
+                        <textarea class="form-control" id="namesInput" rows="3"> <!-- Preenchido em presets.js --> </textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Exclusões:</label>
+                        <span id="passwordHelpInline" class="form-text">Apenas uma regra por linha.</span>
+                        <textarea class="form-control" id="rulesInput" rows="3"> <!-- Preenchido em presets.js --> </textarea>
+                    </div>
+                    <div class="d-flex justify-content-center" style="margin-bottom: 8%; margin-top: 40px;">
+                        <button type="button" class="btn btn-success main-button" style="margin-bottom: 10px;" onclick="generateTeams();">Gerar times</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="presets.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
