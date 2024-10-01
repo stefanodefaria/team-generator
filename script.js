@@ -58,6 +58,10 @@ function selectTeams(players, rules, teamCount) {
     return teams;
 }
 
+function notAllTeamsAreFull(teams) {
+    return teams.find(t => t.includes(undefined)) != null;
+}
+
 function generateTeams() {
     const namesInput = document.getElementById('names-input').value;
     const rulesInput = document.getElementById('rules-input').value;        
@@ -67,24 +71,27 @@ function generateTeams() {
 
     console.log(rules)
 
-    let selectedTeams = selectTeams(players, rules, teamCount);
-    while (selectedTeams.find(t => t.includes(undefined)) != null) {
-        selectedTeams = selectTeams(players, rules, teamCount);
-    }
+    let selectedTeams = selectTeams(players, rules, teamCount)
+	for (let attempt = 0; attempt < 100 && notAllTeamsAreFull(selectedTeams); attempt++) {
+	    selectedTeams = selectTeams(players, rules, teamCount);
+	}
 
     
     let outputCopy = '';
-    selectedTeams.forEach((team, idx) => {
-        let output = '';
-        output += `${team.join(', ')}\n`;
-        outputCopy += `Time ${idx + 1}: ${team.join(', ')}\n`;
-        document.getElementById(`output-${idx + 1}`).textContent = output;
-    });
-
+    if (notAllTeamsAreFull(selectedTeams)) {
+        output = 'Não foi possível gerar times com as regras fornecidas';
+    } else {
+        selectedTeams.forEach((team, idx) => {
+            let output = '';
+            output += `${team.join(', ')}\n`;
+            outputCopy += `Time ${idx + 1}: ${team.join(', ')}\n`;
+            document.getElementById(`output-${idx + 1}`).textContent = output;
+        });
+    }
+    
     document.getElementById('copy-content').textContent = outputCopy;
     resizePages();
     showHiddenElements();
-    
 }
 
 function resizePages() {

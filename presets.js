@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
         'Marcos',
         'Léo',
         'Marcus',
-        'Ferrari',
+        'Rafael',
         'Matheus',
         'Anderson',
         'Paulinho'
     ];
 
     const rules = [
-        'Marcus, Smangol, Lúdico',
+        'Marcus, Smangol, Lúdico', 
         'Paulo, Rodolfo, Felipe',
         'Anderson, Paulinho, Léo'
     ]
