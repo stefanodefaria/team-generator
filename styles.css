@@ -1,0 +1,149 @@
+body {
+    background-color: #d9f2f7;
+    font-family: 'Roboto-Light', sans-serif;
+}
+
+#names-input {
+    height: 380px;
+    width: 100%; /* Ajuste de telas pequenas */
+}
+
+#rules-input {
+    height: 90px;
+    width: 100%;
+}
+
+#generate-teams-title {
+    text-align: center;
+    color: #3AB19B;
+    margin-top: 8%;
+    font-family: 'Roboto-Black', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.resultados {
+    background-color: #3AB19B;
+}
+
+.main-button {
+    background-color: #3AB19B;
+    border-color: #3AB19B;
+    border-radius: 50px;
+
+    width: 100%;
+    max-width: 250px;
+    height: 55px;
+    padding: 10px 20px;
+    line-height: normal;
+}
+
+.main-button:hover {
+    background-color: #268876;
+    border-color: #268876;
+}
+
+.secondary-button {
+    background-color: transparent;
+    border-color: #ffffff;
+    border-radius: 50px;
+
+    width: 100%;
+    max-width: 250px;
+    height: 55px;
+    padding: 10px 20px;
+    line-height: normal;
+
+    margin-top: 20px;
+}
+
+.secondary-button:hover {
+    background-color: #3accb1;
+    border-color: #ffffff;
+}
+
+.partial-ocupation {
+    width: 60%;
+    max-width: 500px;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+@media (min-width: 768px) {
+    .full-center {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .left-form-square {
+        background-image: linear-gradient(to bottom right, #3AB19B, #67ccba);
+        background-color: #3AB19B;
+        border-top-left-radius: 35px;
+        border-bottom-left-radius: 35px;
+        text-align: center;
+        min-height: 100%;
+    }
+    
+    .right-form-square {
+        background-color: #ffffff;
+        border-top-right-radius: 35px;
+        border-bottom-right-radius: 35px;
+    }
+}
+
+@media (max-width: 767px) {
+    .full-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    /* Remover bordas arredondadas em telas pequenas */
+    .left-form-square {
+        background-image: linear-gradient(to bottom right, #3AB19B, #67ccba);
+        background-color: #3AB19B;
+        text-align: center;
+        min-height: 100%;
+    }
+    
+    .right-form-square {
+        background-color: #ffffff;
+    }
+}
+
+.title {
+    font-family: 'Roboto-Black', sans-serif;
+}
+
+.team-subtitle {
+    font-family: 'Roboto-Bold', sans-serif;
+    color: white;
+}
+
+.team-players {
+    color: #cdfaf2;
+}
+
+@font-face {
+    font-family: 'Roboto-Light'; 
+    src: url('/fonts/Roboto-Light.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Black'; 
+    src: url('/fonts/Roboto-Black.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold'; 
+    src: url('/fonts/Roboto-Bold.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
