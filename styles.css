@@ -120,6 +120,11 @@ body {
 
 .team-subtitle {
     font-family: 'Roboto-Bold', sans-serif;
+    color: white;
+}
+
+.team-players {
+    color: #cdfaf2;
 }
 
 @font-face {
