@@ -9,9 +9,13 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="roboto-light">
 
 
     <div class="container full-center">
@@ -20,26 +24,26 @@
             <!-- Campo de resultados -->
             <div class="col-sm-4 left-form-square d-flex align-items-center justify-content-center">
                 <div id="pre-infos" class="partial-ocupation" style="display: block; color: white;">
-                    <h2 class="title">Bora de fut!</h2>
+                    <h2 class="title roboto-black">Bora de fut!</h2>
                     <p>Gere times automaticamente baseado na lista de jogadores confirmada e regras de exclusões, aqueles jogadores que não podem estar no mesmo time.</p>
                     <p>Preencha todas as informações no canto direito e depois só clicar em gerar! Bom futebol.</p>
                 </div>
                 <div id="error-message" class="partial-ocupation" style="display: none; color: white;">
-                    <h2 class="title">Erro</h2>
+                    <h2 class="title roboto-black">Erro</h2>
                     <p>Não foi possível gerar times.</p>
                     <p>Verifique se o número de times, o número de jogadores e as regras definidas são compatíveis.</p>
                 </div>
                 <div id="team-results" class="partial-ocupation" style="display: none;">
                 <div id="team-results-1" class="partial-ocupation" style="display: block;">
-                    <h4 class="team-subtitle">Time 1:</h4>
+                    <h4 class="team-subtitle roboto-bold">Time 1:</h4>
                     <p id="output-1" class="team-players"></p>
                 </div>
                 <div id="team-results-2" class="partial-ocupation" style="display: block;">
-                    <h4 class="team-subtitle">Time 2:</h4>
+                    <h4 class="team-subtitle roboto-bold">Time 2:</h4>
                     <p id="output-2" class="team-players"></p>
                 </div>
                 <div id="team-results-3" class="partial-ocupation" style="display: block;">
-                    <h4 class="team-subtitle">Time 3:</h4>
+                    <h4 class="team-subtitle roboto-bold">Time 3:</h4>
                     <p id="output-3" class="team-players"></p>
                 </div>
                     <p id="copy-content" style="display: none;"></p>
@@ -51,7 +55,7 @@
             <!-- Formulários -->
             <div class="col-sm-8 right-form-square">
                 <div class="partial-ocupation">
-                    <h1 id="generate-teams-title">Gerador de times</h1>
+                    <h1 id="generate-teams-title" class="roboto-black">Gerador de times</h1>
                     <div class="mb-3">
                         <label for="team-count-select" class="form-label">Número de times:</label>
                         <select class="form-select form-select" id="team-count-select">
