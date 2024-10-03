@@ -1,5 +1,5 @@
 body {
-    background-color: #d9f2f7;
+    background-color: #e4e5fb;
     font-family: 'Roboto-Light', sans-serif;
 }
 
@@ -15,19 +15,19 @@ body {
 
 #generate-teams-title {
     text-align: center;
-    color: #3AB19B;
+    color: #6587d9;
     margin-top: 8%;
     font-family: 'Roboto-Black', sans-serif;
     letter-spacing: 1.5px;
 }
 
 .resultados {
-    background-color: #3AB19B;
+    background-color: #6587d9;
 }
 
 .main-button {
-    background-color: #3AB19B;
-    border-color: #3AB19B;
+    background-color: #6587d9;
+    border-color: #6587d9;
     border-radius: 50px;
 
     width: 100%;
@@ -38,13 +38,13 @@ body {
 }
 
 .main-button:hover {
-    background-color: #268876;
-    border-color: #268876;
+    background-color: #5c7dd2;
+    border-color: #5c7dd2;
 }
 
 .secondary-button {
     background-color: transparent;
-    border-color: #ffffff;
+    border-color: white;
     border-radius: 50px;
 
     width: 100%;
@@ -57,8 +57,8 @@ body {
 }
 
 .secondary-button:hover {
-    background-color: #3accb1;
-    border-color: #ffffff;
+    background-color: #8dabe3;
+    border-color: white;
 }
 
 .partial-ocupation {
@@ -77,8 +77,8 @@ body {
     }
 
     .left-form-square {
-        background-image: linear-gradient(to bottom right, #3AB19B, #67ccba);
-        background-color: #3AB19B;
+        background-image: linear-gradient(to bottom right, #6587d9, #9ebde3);
+        background-color: #6587d9;
         border-top-left-radius: 35px;
         border-bottom-left-radius: 35px;
         text-align: center;
@@ -86,7 +86,7 @@ body {
     }
     
     .right-form-square {
-        background-color: #ffffff;
+        background-color: white;
         border-top-right-radius: 35px;
         border-bottom-right-radius: 35px;
     }
@@ -103,14 +103,14 @@ body {
 
     /* Remover bordas arredondadas em telas pequenas */
     .left-form-square {
-        background-image: linear-gradient(to bottom right, #3AB19B, #67ccba);
-        background-color: #3AB19B;
+        background-image: linear-gradient(to bottom right, #6587d9, #9ebde3);
+        background-color: #6587d9;
         text-align: center;
         min-height: 100%;
     }
     
     .right-form-square {
-        background-color: #ffffff;
+        background-color: white;
     }
 }
 
@@ -121,10 +121,11 @@ body {
 .team-subtitle {
     font-family: 'Roboto-Bold', sans-serif;
     color: white;
+    font-weight: bold;
 }
 
 .team-players {
-    color: #cdfaf2;
+    color: #ecedff;
 }
 
 @font-face {

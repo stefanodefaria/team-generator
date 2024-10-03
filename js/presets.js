@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const teamCount = 3;
     const names = [
         'Smangol',
         'Stéfano',
@@ -18,11 +19,20 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     const rules = [
-        'Marcus, Smangol, Lúdico', 
+        'Marcus, Smangol, Lúdico',
         'Paulo, Rodolfo, Felipe',
         'Anderson, Paulinho, Léo'
     ]
-    
+
+    const teamCountSelect = document.getElementById('team-count-select');
+    for (let i = 0; i < teamCountSelect.options.length; i++) {
+        console.log(teamCountSelect.options[i].value);
+        if (teamCountSelect.options[i].value === teamCount.toString()) {
+            teamCountSelect.selectedIndex = i;
+            break;
+        }
+    }
+
     const insertNamesTextArea = document.getElementById('names-input');
     insertNamesTextArea.value = names.join('\n');
 
