@@ -39,3 +39,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const insertRulesTextArea = document.getElementById('rules-input');
     insertRulesTextArea.value = rules.join('\n');
 });
+
+document.getElementById('team-count-select').addEventListener('change', function() {
+    let selectedValue = this.value;
+    let rules;
+    
+    if (selectedValue == 2) {
+        rules = [
+            'Marcus, Lúdico',
+            'Paulo, Felipe',
+            'Anderson, Paulinho'
+        ]
+    } else {
+        rules = [
+            'Marcus, Smangol, Lúdico',
+            'Paulo, Rodolfo, Felipe',
+            'Anderson, Paulinho, Léo'
+        ]
+    }
+    
+    const insertRulesTextArea = document.getElementById('rules-input');
+    insertRulesTextArea.value = rules.join('\n');
+});
