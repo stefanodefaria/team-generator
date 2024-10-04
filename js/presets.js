@@ -1,32 +1,42 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const teamCount = 3;
-    const names = [
-        'Smangol',
-        'Stéfano',
-        'Lucas',
-        'Horse',
-        'Rodolfo',
-        'Paulo',
-        'Felipe',
-        'Bazza',
-        'Marcos',
-        'Léo',
-        'Marcus',
-        'Rafael',
-        'Matheus',
-        'Anderson',
-        'Paulinho'
-    ];
+const teamCount = 3;
+const players = [
+    'Smangol',
+    'Stéfano',
+    'Lucas',
+    'Horse',
+    'Rodolfo',
+    'Paulo',
+    'Felipe',
+    'Bazza',
+    'Marcos',
+    'Léo',
+    'Marcus',
+    'Rafael',
+    'Matheus',
+    'Anderson',
+    'Paulinho'
+];
 
-    const rules = [
+const rulesByTeamCount = {
+    "2": [
+        'Marcus, Lúdico',
+        'Paulo, Felipe',
+        'Anderson, Paulinho'
+    ],
+    "3": [
         'Marcus, Smangol, Lúdico',
         'Paulo, Rodolfo, Felipe',
         'Anderson, Paulinho, Léo'
     ]
+};
 
+function updateRules () {
+    document.getElementById('rules-input').value = rulesByTeamCount[this.value].join('\n');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
     const teamCountSelect = document.getElementById('team-count-select');
     for (let i = 0; i < teamCountSelect.options.length; i++) {
-        console.log(teamCountSelect.options[i].value);
         if (teamCountSelect.options[i].value === teamCount.toString()) {
             teamCountSelect.selectedIndex = i;
             break;
@@ -34,30 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const insertNamesTextArea = document.getElementById('names-input');
-    insertNamesTextArea.value = names.join('\n');
-
-    const insertRulesTextArea = document.getElementById('rules-input');
-    insertRulesTextArea.value = rules.join('\n');
+    insertNamesTextArea.value = players.join('\n');
+    updateRules.apply(teamCountSelect);
 });
 
-document.getElementById('team-count-select').addEventListener('change', function() {
-    let selectedValue = this.value;
-    let rules;
-    
-    if (selectedValue == 2) {
-        rules = [
-            'Marcus, Lúdico',
-            'Paulo, Felipe',
-            'Anderson, Paulinho'
-        ]
-    } else {
-        rules = [
-            'Marcus, Smangol, Lúdico',
-            'Paulo, Rodolfo, Felipe',
-            'Anderson, Paulinho, Léo'
-        ]
-    }
-    
-    const insertRulesTextArea = document.getElementById('rules-input');
-    insertRulesTextArea.value = rules.join('\n');
-});
+document.getElementById('team-count-select').addEventListener('change', updateRules);

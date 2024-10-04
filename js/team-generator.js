@@ -56,20 +56,21 @@ function removeUndefinedPlayers(teams) {
     return newTeams;
 }
 
-function notAllTeamsAreFull(teams, minTeamPlayers) {
-    return removeUndefinedPlayers(teams).find(team => team.length < minTeamPlayers) != null;
+function notAllTeamsAreFull(teams, totalPlayers) {
+    const minTeamPlayers = Math.floor(totalPlayers / teams.length)
+    const teamsWithoutUndefinedPlayers = removeUndefinedPlayers(teams);
+    return teamsWithoutUndefinedPlayers.find(team => team.length < minTeamPlayers) != null &&
+        teamsWithoutUndefinedPlayers.reduce((acc, team) => acc += team.length, 0);
 }
 
 function generateTeams(players, rules, teamCount) {
-    const minTeamPlayers = Math.floor(players.length / teamCount);
-
     let selectedTeams = selectTeams(players, rules, teamCount)
-    for (let attempt = 0; attempt < 100 && notAllTeamsAreFull(selectedTeams, minTeamPlayers); attempt++) {
+    for (let attempt = 0; attempt < 100 && notAllTeamsAreFull(selectedTeams, players.length); attempt++) {
         selectedTeams = selectTeams(players, rules, teamCount);
     }
 
 
-    if (notAllTeamsAreFull(selectedTeams, minTeamPlayers)) {
+    if (notAllTeamsAreFull(selectedTeams, players.length)) {
         throw new Error("Cannot generate teams")
     }
 

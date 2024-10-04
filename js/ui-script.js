@@ -1,5 +1,5 @@
 function generateTeamsButtonAction() {
-    setCleanPlayers();
+    sanitizePlayersTextArea()
     const namesInput = document.getElementById('names-input').value;
     const rulesInput = document.getElementById('rules-input').value;
     const teamCount = parseInt(document.getElementById('team-count-select').value, 10);
@@ -18,24 +18,14 @@ function generateTeamsButtonAction() {
         displayOnlyTeamResults(teamCount);
     } catch (e) {
         displayOnlyErrorMessage();
-        console.log(e);
+        console.error(e);
     }
     window.scrollTo(0, 0);
 }
 
-// Deprecated
-function sanitizePlayers(playersString) {
-    const pattern = "(?:\\d{1,2}\\s*-\\s*(?:(?:((?:[A-zÀ-ú]+\\s*[0-9]?\\s*)+))❌\\s*)?(?:(?:((?:[A-zÀ-ú]+\\s*[0-9]?\\s*)+))✅?))|(?:(?:((?:[A-zÀ-ú]+\\s*[0-9]?\\s*)+)))";
-
-    return playersString.split('\n')
-        .map(p => p.trim())
-        .map(p => p.replaceAll("✖️", "❌").replaceAll("✔️", "✅").replaceAll("☑️", "✅"))
-        .filter(p =>
-            new RegExp(pattern, "g").test(p)
-        )
-        .map(p => new RegExp(pattern, "g").exec(p).filter(Boolean).pop())
-        .filter(Boolean)
-        .map(p => p.trim());
+function sanitizePlayersTextArea() {
+    const dirtyPlayersText = document.getElementById('names-input').value;
+    document.getElementById('names-input').value = sanitizeNamesInput(dirtyPlayersText);
 }
 
 function hideWelcomeMessages() {
@@ -63,9 +53,9 @@ function displayOnlyTeamResults(teamCount) {
 }
 
 function copyToClipboard() {
-    const conteudoParaCopiar = document.getElementById('copy-content').textContent;
+    const contentToCopy = document.getElementById('copy-content').textContent;
 
-    navigator.clipboard.writeText(conteudoParaCopiar)
+    navigator.clipboard.writeText(contentToCopy)
         .then(() => {
             document.getElementById('copy-feedback-message').style.display = 'block';
         })
@@ -76,30 +66,26 @@ function copyToClipboard() {
         });
 }
 
-function setCleanPlayers() {
-    let namesInput = document.getElementById('names-input').value;
-    let namesInputTextArea = document.getElementById('names-input');
-    let jogadoresCorrigido;
+function sanitizeNamesInput(namesInput) {
+    return namesInput.replace(/^.*mensalista não confirmado:/s, '')
+        .replaceAll("✖️", "❌")
+        .replaceAll("✔️", "✅")
+        .replaceAll("☑️", "✅")
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => Boolean(line) && !line.includes('🧤'))
+        .map(line => {
+            let player = '';
+            let transformedLine = line.replace(/^\d+\s*-\s*/, '');
+            const alreadySanitized = line.match(/^(?:[A-zÀ-ú]+\s*[0-9]?\s*)+$/);
+            if (transformedLine.includes('❌')) { // Considerar avulsos
+                player = line.split('❌')[1].trim();
+            } else if (alreadySanitized || transformedLine.includes('✅')) { // Somente considerar mensalista confirmado
+                player = transformedLine;
+            }
 
-    const regexHeader = /^.*mensalista não confirmado:/s;
-    jogadoresCorrigido = namesInput.replace(regexHeader, '');
-    
-    let linhas = jogadoresCorrigido.split('\n');
-    let linhasFiltradas = linhas.filter(linha => linha.trim() !== '' && !linha.includes('🧤'));
-    let linhasProcessadas = linhasFiltradas.map(linha => {
-        linha = linha.replace(/^\d+\s*-\s*/, '');
-
-        // Considerar avulsos
-        if (linha.includes('❌')) {
-            let partes = linha.split('❌');
-            linha = partes[1].trim();
-        }
-
-        linha = linha.replace(/✅/g, '').trim();
-
-        return linha;
-    });
-
-    jogadoresCorrigido = linhasProcessadas.join('\n');
-    namesInputTextArea.value = jogadoresCorrigido;
+            return player.replace(/✅/g, '').trim();
+        })
+        .filter(Boolean)
+        .join('\n');
 }
