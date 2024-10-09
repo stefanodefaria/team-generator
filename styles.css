@@ -113,6 +113,11 @@ body {
     .right-form-square {
         background-color: white;
     }
+
+    .secondary-button {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
 }
 
 .team-subtitle {
