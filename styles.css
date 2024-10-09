@@ -52,11 +52,20 @@ body {
     line-height: normal;
 
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .secondary-button:hover {
     background-color: #8dabe3;
     border-color: white;
+}
+
+.secondary-button:active, 
+.secondary-button:focus {
+    background-color: #8dabe3 !important; /* Sua cor desejada ao clicar */
+    border-color: white !important;
+    box-shadow: none;
+    outline: none;
 }
 
 .partial-ocupation {
