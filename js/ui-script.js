@@ -90,22 +90,17 @@ function sanitizeNamesInput(namesInput) {
         .join('\n');
 }
 
-
-    async function test() {
-        try {
-            // Verifica se o navegador suporta a API Clipboard
-            if (navigator.clipboard && navigator.clipboard.readText) {
-                const clipboardText = await navigator.clipboard.readText();
-                document.getElementById('names-input').value = clipboardText;
-            } else {
-                // Fallback para navegadores que não suportam a API Clipboard
-                const namesInput = document.getElementById('names-input');
-                namesInput.focus();
-    
-                // Criando um event listener para capturar o "colar" no input
-                document.execCommand('paste');
-            }
-        } catch (error) {
-            console.error("Erro ao colar do clipboard:", error);
+async function pasteFromClipboard() {
+    try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+            const clipboardText = await navigator.clipboard.readText();
+            document.getElementById('names-input').value = clipboardText;
+        } else {
+            const namesInput = document.getElementById('names-input');
+            namesInput.focus();
+            document.execCommand('paste');
         }
-    }    
+    } catch (error) {
+        console.error("Erro ao colar do clipboard:", error);
+    }
+}

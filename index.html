@@ -55,23 +55,23 @@
             <div class="col-sm-8 right-form-square">
                 <div class="partial-ocupation">
                     <h1 id="generate-teams-title" class="roboto-black">Gerador de times</h1>
-                    <div class="mb-3">
+                    <section>
                         <label for="team-count-select" class="form-label">Número de times:</label>
                         <select class="form-select form-select roboto-light" id="team-count-select">
                             <option value="2">2</option>
                             <option value="3" selected>3</option>
                         </select>
-                    </div>
-                    <div class="mb-3">
+                    </section>
+                    <section>
                         <label for="names-input" class="form-label">Jogadores:</label>
-                        <a class="form-text" onclick="test();">Importar times.</a>
+                        <a class="form-text" onclick="pasteFromClipboard();">Importar times.</a>
                         <textarea class="form-control roboto-light" id="names-input" rows="3"> <!-- Preenchido em presets.js --> </textarea>
-                    </div>
-                    <div class="mb-3">
+                    </section>
+                    <section>
                         <label for="rules-input" class="form-label">Exclusões:</label>
-                        <span class="form-text">Apenas uma regra por linha.</span>
+                        <span class="form-text lh-1">Apenas uma regra por linha.</span>
                         <textarea class="form-control roboto-light" id="rules-input" rows="3"> <!-- Preenchido em presets.js --> </textarea>
-                    </div>
+                    </section>
                     <div class="d-flex justify-content-center" style="margin-bottom: 2rem; margin-top: 2rem;">
                         <button type="button" class="btn btn-success main-button" style="margin-bottom: 10px;" onclick="generateTeamsButtonAction();">Gerar times</button>
                     </div>

@@ -11,9 +11,18 @@ a:hover {
     color: #5b86f3;
 }
 
+span {
+    line-height: 0.001px;
+    line-break:strict;
+}
+
+section {
+    margin-bottom: 1rem;
+}
+
 #names-input {
     height: 380px;
-    width: 100%; /* Ajuste de telas pequenas */
+    width: 100%;
 }
 
 #rules-input {
@@ -71,7 +80,7 @@ a:hover {
 
 .secondary-button:active, 
 .secondary-button:focus {
-    background-color: #8dabe3 !important; /* Sua cor desejada ao clicar */
+    background-color: #8dabe3 !important;
     border-color: white !important;
     box-shadow: none;
     outline: none;
@@ -120,7 +129,6 @@ a:hover {
         width: 100%;
     }
 
-    /* Remover bordas arredondadas em telas pequenas */
     .left-form-square {
         background-image: linear-gradient(to bottom right, #6587d9, #9ebde3);
         background-color: #6587d9;
